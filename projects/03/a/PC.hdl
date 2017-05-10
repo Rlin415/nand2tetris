@@ -16,5 +16,16 @@ CHIP PC {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    // reset or load
+    Mux16 (a=in, b=false, sel=reset, out=option1);
+
+    // increment or out
+    Inc16 (in=v, out=iOut);
+    Mux16 (a=v, b=iOut, sel=inc, out=option2);
+
+    // choose approrpriate option to pass as input to register
+    Or (a=reset, b=load, out=resetOrLoad);
+    Mux16 (a=option2, b=option1, sel=resetOrLoad, out=final);
+
+    Register (in=final, load=true, out=out, out=v);
 }
