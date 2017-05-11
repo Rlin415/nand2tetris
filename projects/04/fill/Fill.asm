@@ -53,8 +53,8 @@ M=1 // initial state is set to 1 to signal screen is clear
   M=M-1 // n--
   D=M
 
-  @COLOR
-  D;JGE // jump back to COLOR if (n >= 0)
+  @CLEAR
+  D;JGE // jump back to CLEAR if (n >= 0)
 
   @i
   M=0 // set back to 0
